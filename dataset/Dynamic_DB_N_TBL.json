@@ -1,0 +1,35 @@
+{
+	"name": "Dynamic_DB_N_TBL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_PARAM",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"ServerName": "sqlserver-adebatch22.database.windows.net",
+				"DBName": {
+					"value": "@dataset().DB_NAME",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"TBL_NAME": {
+				"type": "string"
+			},
+			"DB_NAME": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "DBO",
+			"table": {
+				"value": "@dataset().TBL_NAME",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,19 @@
+{
+	"name": "NewSchedule2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Wait1",
+				"type": "Wait",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 1
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-03-28T04:18:07Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

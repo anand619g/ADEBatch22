@@ -1,0 +1,9 @@
+{
+	"name": "DF-ADEBATCH22",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "dcfe8010-7af5-4f1e-bef1-135021648643",
+		"tenantId": "2efaf1d3-69f6-4f3d-bd68-7cfdef942f4f"
+	}
+}

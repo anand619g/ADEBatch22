@@ -1,0 +1,25 @@
+{
+	"name": "eventrigger2",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "EventBasedPipeline",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/eventbasedtriger/blobs/Input",
+			"blobPathEndsWith": "csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/39249e4a-505e-4ae1-b260-6eee4e5ae5bc/resourceGroups/ADE_Batch22/providers/Microsoft.Storage/storageAccounts/adlsbatch22",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

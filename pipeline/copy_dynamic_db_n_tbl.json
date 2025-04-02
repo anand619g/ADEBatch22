@@ -1,0 +1,90 @@
+{
+	"name": "copy_dynamic_db_n_tbl",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Dynamic_DB_N_TBL",
+						"type": "DatasetReference",
+						"parameters": {
+							"TBL_NAME": {
+								"value": "@pipeline().parameters.INPUT_TBLNAME",
+								"type": "Expression"
+							},
+							"DB_NAME": {
+								"value": "@pipeline().parameters.INPUT_DBNAME",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Dynamic_DB_N_TBL",
+						"type": "DatasetReference",
+						"parameters": {
+							"TBL_NAME": {
+								"value": "@pipeline().parameters.OUTPUT_TBLNAME",
+								"type": "Expression"
+							},
+							"DB_NAME": {
+								"value": "@pipeline().parameters.OUTPUT_DBNAME",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"INPUT_DBNAME": {
+				"type": "string"
+			},
+			"OUTPUT_DBNAME": {
+				"type": "string"
+			},
+			"INPUT_TBLNAME": {
+				"type": "string"
+			},
+			"OUTPUT_TBLNAME": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-03-25T04:36:58Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
