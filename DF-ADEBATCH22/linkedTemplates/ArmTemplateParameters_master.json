@@ -1,0 +1,69 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "DF-ADEBATCH22"
+		},
+		"LS_KV_ADLS_connectionString": {
+			"value": "DefaultEndpointsProtocol=https;AccountName=adlsbatch22;"
+		},
+		"LS_SQL_PARAM_password": {
+			"value": ""
+		},
+		"LS_adls_connectionString": {
+			"value": ""
+		},
+		"LS_sql_password": {
+			"value": ""
+		},
+		"KV_adebatch22_properties_typeProperties_baseUrl": {
+			"value": "https://kv-adebatch22.vault.azure.net/"
+		},
+		"LS_KV_SQL_properties_typeProperties_server": {
+			"value": "sqlserver-adebatch22.database.windows.net"
+		},
+		"LS_KV_SQL_properties_typeProperties_database": {
+			"value": "sqldb-adebatch22"
+		},
+		"LS_KV_SQL_properties_typeProperties_userName": {
+			"value": "adebatch22"
+		},
+		"LS_SQL_PARAM_properties_typeProperties_server": {
+			"value": "@{linkedService().ServerName}"
+		},
+		"LS_SQL_PARAM_properties_typeProperties_database": {
+			"value": "@{linkedService().DBName}"
+		},
+		"LS_SQL_PARAM_properties_typeProperties_userName": {
+			"value": "adebatch22"
+		},
+		"LS_sql_properties_typeProperties_server": {
+			"value": "sqlserver-adebatch22.database.windows.net"
+		},
+		"LS_sql_properties_typeProperties_database": {
+			"value": "sqldb-adebatch22"
+		},
+		"LS_sql_properties_typeProperties_userName": {
+			"value": "adebatch22"
+		},
+		"Eventbasedtrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/39249e4a-505e-4ae1-b260-6eee4e5ae5bc/resourceGroups/ADE_Batch22/providers/Microsoft.Storage/storageAccounts/adlsbatch22"
+		},
+		"TumblingTrigger_properties_pipeline_parameters_WindowStartTime": {
+			"value": "@trigger().outputs.windowStartTime"
+		},
+		"TumblingTrigger_properties_pipeline_parameters_WindowEndTime": {
+			"value": "@trigger().outputs.windowEndTime"
+		},
+		"eventrigger2_properties_typeProperties_scope": {
+			"value": "/subscriptions/39249e4a-505e-4ae1-b260-6eee4e5ae5bc/resourceGroups/ADE_Batch22/providers/Microsoft.Storage/storageAccounts/adlsbatch22"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

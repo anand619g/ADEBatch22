@@ -1,0 +1,209 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "DF-ADEBATCH22"
+		},
+		"LS_KV_ADLS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_KV_ADLS'",
+			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=adlsbatch22;"
+		},
+		"LS_SQL_PARAM_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL_PARAM'"
+		},
+		"LS_adls_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_adls'"
+		},
+		"LS_sql_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_sql'"
+		},
+		"KV_adebatch22_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://kv-adebatch22.vault.azure.net/"
+		},
+		"LS_KV_SQL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserver-adebatch22.database.windows.net"
+		},
+		"LS_KV_SQL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sqldb-adebatch22"
+		},
+		"LS_KV_SQL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adebatch22"
+		},
+		"LS_SQL_PARAM_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "@{linkedService().ServerName}"
+		},
+		"LS_SQL_PARAM_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "@{linkedService().DBName}"
+		},
+		"LS_SQL_PARAM_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adebatch22"
+		},
+		"LS_sql_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserver-adebatch22.database.windows.net"
+		},
+		"LS_sql_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sqldb-adebatch22"
+		},
+		"LS_sql_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adebatch22"
+		},
+		"Eventbasedtrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/39249e4a-505e-4ae1-b260-6eee4e5ae5bc/resourceGroups/ADE_Batch22/providers/Microsoft.Storage/storageAccounts/adlsbatch22"
+		},
+		"TumblingTrigger_properties_pipeline_parameters_WindowStartTime": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowStartTime"
+		},
+		"TumblingTrigger_properties_pipeline_parameters_WindowEndTime": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowEndTime"
+		},
+		"eventrigger2_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/39249e4a-505e-4ae1-b260-6eee4e5ae5bc/resourceGroups/ADE_Batch22/providers/Microsoft.Storage/storageAccounts/adlsbatch22"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "DF-ADEBATCH22_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_SQL_PARAM_password": {
+						"value": "[parameters('LS_SQL_PARAM_password')]"
+					},
+					"LS_adls_connectionString": {
+						"value": "[parameters('LS_adls_connectionString')]"
+					},
+					"LS_sql_password": {
+						"value": "[parameters('LS_sql_password')]"
+					},
+					"KV_adebatch22_properties_typeProperties_baseUrl": {
+						"value": "[parameters('KV_adebatch22_properties_typeProperties_baseUrl')]"
+					},
+					"LS_SQL_PARAM_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_PARAM_properties_typeProperties_server')]"
+					},
+					"LS_SQL_PARAM_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_PARAM_properties_typeProperties_database')]"
+					},
+					"LS_SQL_PARAM_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_PARAM_properties_typeProperties_userName')]"
+					},
+					"LS_sql_properties_typeProperties_server": {
+						"value": "[parameters('LS_sql_properties_typeProperties_server')]"
+					},
+					"LS_sql_properties_typeProperties_database": {
+						"value": "[parameters('LS_sql_properties_typeProperties_database')]"
+					},
+					"LS_sql_properties_typeProperties_userName": {
+						"value": "[parameters('LS_sql_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "DF-ADEBATCH22_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_KV_ADLS_connectionString": {
+						"value": "[parameters('LS_KV_ADLS_connectionString')]"
+					},
+					"LS_KV_SQL_properties_typeProperties_server": {
+						"value": "[parameters('LS_KV_SQL_properties_typeProperties_server')]"
+					},
+					"LS_KV_SQL_properties_typeProperties_database": {
+						"value": "[parameters('LS_KV_SQL_properties_typeProperties_database')]"
+					},
+					"LS_KV_SQL_properties_typeProperties_userName": {
+						"value": "[parameters('LS_KV_SQL_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DF-ADEBATCH22_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "DF-ADEBATCH22_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Eventbasedtrigger_properties_typeProperties_scope": {
+						"value": "[parameters('Eventbasedtrigger_properties_typeProperties_scope')]"
+					},
+					"TumblingTrigger_properties_pipeline_parameters_WindowStartTime": {
+						"value": "[parameters('TumblingTrigger_properties_pipeline_parameters_WindowStartTime')]"
+					},
+					"TumblingTrigger_properties_pipeline_parameters_WindowEndTime": {
+						"value": "[parameters('TumblingTrigger_properties_pipeline_parameters_WindowEndTime')]"
+					},
+					"eventrigger2_properties_typeProperties_scope": {
+						"value": "[parameters('eventrigger2_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DF-ADEBATCH22_ArmTemplate_1')]"
+			]
+		}
+	]
+}
